@@ -1,17 +1,13 @@
-# P04 — Plantilla de ficha de requerimientos arquitectónicos (v1)
+# Plantilla de ficha arquitectónica v1
 
-## Variables
-- {ROL_LECTOR}: persona que usará la ficha.
-- {UBICACION}: municipio y estado confirmados o NO ESPECIFICADO.
-- {TIPO_DE_PROYECTO}: uso general del proyecto.
-- {ENTRADA}: descripción literal del cliente.
+Variables: {ROL_LECTOR}, {TIPO_ESPACIO}, {UBICACION}, {CAMPOS}, {ENTRADA}.
 
-## Prompt reutilizable
-```text
-Eres arquitecto responsable de documentar requerimientos iniciales para {TIPO_DE_PROYECTO}. Tu lector es {ROL_LECTOR}.
-Ubicación declarada del predio: {UBICACION}. Se trata de una ficha preliminar y no sustituye un levantamiento ni una verificación normativa.
+Eres arquitecto encargado del levantamiento preliminar de requisitos. Tu lector es {ROL_LECTOR}.
 
-Responde únicamente con esta tabla Markdown, sin texto adicional:
+Contexto: prepara una ficha preliminar para {TIPO_ESPACIO} en {UBICACION}, a partir del texto libre de un cliente no especialista. Los campos obligatorios son {CAMPOS} (configuración probada: uso, superficie, ventilación, iluminación, normativa aplicable). Solo acepta información explícita y consistente; no inventes normas, áreas ni permisos.
+
+Responde únicamente con esta tabla en Markdown y sin texto extra:
+
 | Campo | Valor |
 |---|---|
 | Uso | |
@@ -19,37 +15,43 @@ Responde únicamente con esta tabla Markdown, sin texto adicional:
 | Ventilación | |
 | Iluminación | |
 | Normativa aplicable | |
-| Información faltante o contradictoria | |
-Si un dato no consta o está en conflicto, escribe "NO ESPECIFICADO" o "POR VERIFICAR"; no inventes medidas, condiciones existentes, municipio ni normativa. Escribe los pendientes en la última fila.
+| Información faltante | |
 
-Ejemplo independiente:
-Entrada: "Busco una bodega para archivos en una oficina. El cuarto mide 2 × 3 m. No tiene ventanas. No conozco las reglas locales."
-Salida:
+Ante datos ausentes escribe NO ESPECIFICADO; ante conflictos escribe CONTRADICTORIO y detalla qué debe aclararse en Información faltante.
+
+Ejemplo de entrada: «Se requiere una bodega de utilería de 3 m × 4 m (12 m²) en Tepic, Nayarit; no se proporcionó información sobre ventanas, iluminación artificial ni norma aplicable».
+
+Ejemplo de salida:
 | Campo | Valor |
 |---|---|
-| Uso | Bodega de archivos |
-| Superficie | 6 m² (2 × 3 m) |
-| Ventilación | NO ESPECIFICADO; no hay ventanas y no se describe sistema alterno |
+| Uso | Bodega de utilería |
+| Superficie | 12 m² |
+| Ventilación | NO ESPECIFICADO |
 | Iluminación | NO ESPECIFICADO |
-| Normativa aplicable | POR VERIFICAR con autoridad local según el sitio |
-| Información faltante o contradictoria | Ubicación, ventilación disponible, iluminación y requisitos locales |
+| Normativa aplicable | NO ESPECIFICADO: verificar disposiciones municipales vigentes |
+| Información faltante | Ventilación, iluminación y normativa específica verificada |
 
-Texto del cliente:
+Descripción a procesar:
 {ENTRADA}
-```
 
-## Instrucciones y límites
-Reemplazar cada variable con información confirmada; para ubicación desconocida usar NO ESPECIFICADO. Copiar el prompt entero y verificar normativa y medidas con fuentes oficiales y visita al sitio.
+## Instrucciones de uso
 
-**Modelo de referencia:** ChatGPT, GPT-6 declarado en esta sesión; temperatura no controlada. **Fecha:** 24-10-2026.
-**Resultado ilustrativo:** 18/18 puntos con tres casos y 6/6 en robustez. **Importante:** las 18 respuestas todavía no son un experimento de chats independientes.
+- {ROL_LECTOR}: coordinador de diseño u otro lector concreto.
+- {TIPO_ESPACIO}: destino arquitectónico.
+- {UBICACION}: localidad y municipio comprobados o NO ESPECIFICADO.
+- {CAMPOS}: mantener los cinco campos evaluados; si se cambian, repetir rúbrica.
+- {ENTRADA}: texto literal del cliente, sin agregar supuestos.
+- Modelo de referencia: GPT-6 (ChatGPT). Demostración de iteración 4: 17/18; prueba con caso no visto: 6/6.
+- Limitaciones: no confirma normativa, uso de suelo, permisos ni mediciones por sí sola. Las respuestas son demostrativas, no 18 conversaciones independientes verificadas.
 
-## Histórico de iteraciones
 
-| Iteración | Técnica | C1 máximo 6 | C2 máximo 6 | C3 máximo 6 | Total máximo 18 | Observación |
-| 0 | Línea base (zero-shot) | 3 | 0 | 2 | 5 | Texto libre: faltan campos, se supusieron medidas y ventilación. |
-| 1 | Rol | 4 | 0 | 3 | 7 | El rol mejora el vocabulario, pero el formato y varias suposiciones persisten. |
-| 2 | Rol + contexto | 5 | 0 | 3 | 8 | El contexto enumera campos, pero no corrige todas las suposiciones. |
-| 3 | Rol + contexto + formato | 6 | 6 | 5 | 17 | La tabla corrige el formato; el caso 3 aún presupone ventilación. |
-| 4 | Anterior + ejemplo (few-shot) | 6 | 6 | 6 | 18 | El ejemplo estabiliza los valores y explicita incertidumbre. |
-| 5 | Anterior + análisis previo | 6 | 3 | 6 | 15 | La sección de análisis mejora trazabilidad, pero viola «solo la tabla». |
+## Tabla histórica de puntajes
+
+| Iteración | C1 | C2 | C3 | Total |
+|---|---:|---:|---:|---:|
+| 0 | 4 | 1 | 2 | 7 |
+| 1 | 5 | 1 | 3 | 9 |
+| 2 | 6 | 1 | 4 | 11 |
+| 3 | 6 | 5 | 4 | 15 |
+| 4 | 6 | 6 | 5 | 17 |
+| 5 | 6 | 3 | 6 | 15 |
