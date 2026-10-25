@@ -1,0 +1,7 @@
+Iteración,Técnica aplicada,Criterio 1,Criterio 2,Criterio 3,Total,Observación
+"0","Línea base (zero-shot)","4","1","2","7","Predomina prosa; la entrada incompleta recibe una superficie no informada."
+"1","Rol","5","1","3","9","El vocabulario técnico mejora, pero persisten supuestos y formatos variables."
+"2","Rol + contexto","6","1","4","11","Los campos se cubren; falta estandarizar la salida y controlar supuestos."
+"3","Rol + contexto + formato","6","5","4","15","La tabla eleva el formato; todavía aparecen recomendaciones mezcladas con datos."
+"4","Anterior + ejemplo (few-shot)","6","6","5","17","La plantilla queda uniforme; la entrada contradictoria conserva una sugerencia no solicitada."
+"5","Anterior + análisis previo","6","3","6","15","Mejor control de incertidumbre, pero el análisis previo incumple «solo tabla»."
