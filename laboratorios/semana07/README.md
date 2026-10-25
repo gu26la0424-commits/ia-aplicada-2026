@@ -18,3 +18,16 @@
 - [Nuevo P04 del portafolio](../../proyecto/portafolio_prompts/P04_ficha_requerimientos.md).
 
 Se adopta I4 con 17/18 puntos (muestras demostrativas); robustez documental 6/6. **No hay evidencia de 18 sesiones nuevas independientes ni capturas de dispositivo**; el reporte Word lo aclara.
+
+
+## Laboratorio de mejora iterativa (24/10/2026)
+
+- [Reporte completo](reporte_semana07.md)
+- [Tres entradas y un caso de robustez](entradas.md)
+- [Iteraciones 0–5](iteracion_0.md) (los demás archivos siguen la misma numeración)
+- [CSV de totales](resultados_iteraciones.csv) y [desglose](puntajes_por_entrada.csv)
+- [Plantilla P04](plantilla_prompt_v1.md)
+- [Prueba de robustez](prueba_robustez.md)
+- [Entrada al portafolio](portafolio_prompts.md)
+
+**Alcance:** muestras ilustrativas; aún faltan 18 ejecuciones independientes y capturas auténticas.
