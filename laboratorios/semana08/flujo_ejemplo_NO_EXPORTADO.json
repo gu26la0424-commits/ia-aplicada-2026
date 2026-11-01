@@ -1,0 +1,28 @@
+{
+  "tipo": "EJEMPLO CONCEPTUAL - NO EXPORTADO NI IMPORTABLE",
+  "creado": "2026-10-31",
+  "pasos": [
+    {
+      "numero": 1,
+      "nombre": "Entrada",
+      "accion": "Capturar reporte ficticio sin datos personales"
+    },
+    {
+      "numero": 2,
+      "nombre": "Clasificación",
+      "accion": "Calcular etiqueta con criterios validados"
+    },
+    {
+      "numero": 3,
+      "nombre": "Registro",
+      "accion": "Guardar etiqueta y registrar revisión humana"
+    }
+  ],
+  "pendientes": [
+    "Exportación real de plataforma",
+    "Captura de pasos en verde",
+    "Casos reales del taller",
+    "Captura de error silencioso real",
+    "Respuestas originales de seguridad"
+  ]
+}
